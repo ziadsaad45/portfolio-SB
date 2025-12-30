@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziad Saad - Software Engineer & Educator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #0ea5e9;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #6366f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--secondary);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .active-link {
+            color: var(--secondary) !important;
+        }
+
+        .active-link::after {
+            width: 100% !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 50%, #334155 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="2" fill="%23ffffff" opacity="0.1"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s 0.6s both;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--primary);
+        }
+
+        /* Skills Section */
+        #skills {
+            background: var(--light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3::before {
+            content: '▶';
+            color: var(--accent);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.1);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2rem;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 1920px) {
+            section {
+                max-width: 1600px;
+            }
+
+            nav {
+                max-width: 1600px;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1440px) and (max-width: 1919px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: left 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                text-align: center;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-left: 2rem;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 60px 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .project-header h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Ziad Saad</div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span id="menuIcon">☰</span>
+            </button>
+            <ul id="navMenu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Ziad Ahmed Saad</h1>
+            <p class="subtitle">Software Engineer & Programming Educator</p>
+            <p>3+ years building scalable systems & empowering 100+ students | IoT • ERP • Full-Stack Development</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Software Engineer & Programming Educator</h3>
+                <p>Software Engineer and Programming Educator with 3+ years of experience in full-stack development, IoT systems, and ERP solutions. Successfully taught 100+ students (450+ hours) while developing enterprise systems at El Sewedy Electric. Proficient in Python, Java, Django, and Oracle technologies with proven ability to simplify complex concepts and deliver scalable solutions.</p>
+                <p>My dual role as both an engineer and educator has given me a unique perspective on technology—combining hands-on development expertise with the ability to mentor and inspire the next generation of programmers. From architecting IoT monitoring systems that reduce downtime by 25% to increasing student coding proficiency through interactive curricula, I deliver measurable impact in everything I build and teach.</p>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">450+</div>
+                    <div>Teaching Hours</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div>Students Mentored</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3+</div>
+                    <div>Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div>Technologies Mastered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Programming Instructor</h3>
+                    <div class="timeline-date">June 2024 - Present</div>
+                    <h4>iSchool (DEMI Program) - Remote</h4>
+                    <ul>
+                        <li>Teach Python and Scratch to 50+ students aged 8-18, increasing coding proficiency by 40% through interactive curriculum</li>
+                        <li>Designed 20+ project-based lessons enhancing computational thinking and problem-solving skills</li>
+                        <li>Mentored students in developing 15+ real-world projects with 85% completion rate</li>
+                        <li>Collaborated with Ministry of Communications on national digital education initiative reaching 500+ youth</li>
+                    </ul>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Founder & CEO</h3>
+                    <div class="timeline-date">2022 - August 2023</div>
+                    <h4>ACA (Ace Series Academy)</h4>
+                    <ul>
+                        <li>Founded programming academy serving 100+ students with 90% course completion rate</li>
+                        <li>Managed 8-person team of instructors, implementing training program that improved teaching quality by 35%</li>
+                        <li>Created 50+ comprehensive course materials for Web Development, Python, and Java curricula</li>
+                        <li>Produced 100+ educational content pieces generating 10K+ social media engagements on programming concepts</li>
+                    </ul>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Python & Scratch Instructor</h3>
+                    <div class="timeline-date">January 2022 - March 2023</div>
+                    <h4>Techware Academy</h4>
+                    <ul>
+                        <li>Taught 60+ students Python and Scratch fundamentals with 88% achieving advanced certification</li>
+                        <li>Developed curriculum integrating robotics with programming, increasing student engagement by 45%</li>
+                        <li>Mentored students in building 25+ robotics projects combining hardware and software</li>
+                        <li>Reduced student drop-out rate by 30% through personalized learning approaches</li>
+                    </ul>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Odoo Developer Intern</h3>
+                    <div class="timeline-date">October 2022 - March 2023</div>
+                    <h4>ZAD SOLUTION Company - Giza</h4>
+                    <ul>
+                        <li>Developed 5+ custom Odoo ERP modules for inventory and HR management serving 200+ end users</li>
+                        <li>Reduced manual data entry by 40% through automated workflow implementations using Python and PostgreSQL</li>
+                        <li>Optimized database queries improving system performance by 25%</li>
+                        <li>Completed intensive Odoo training program, mastering OOP principles and enterprise architecture</li>
+                    </ul>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java 8 & 17</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Dart</span>
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">PL/SQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Web Development</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">RESTful API</span>
+                    <span class="skill-tag">Oracle Apex</span>
+                    <span class="skill-tag">Node-RED</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Databases & Cloud</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Oracle Database</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">OCI</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Software Engineering</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">OOP</span>
+                    <span class="skill-tag">SOLID Principles</span>
+                    <span class="skill-tag">Design Patterns</span>
+                    <span class="skill-tag">Algorithms & Data Structures</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Testing & Automation</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Selenium</span>
+                    <span class="skill-tag">Manual Testing</span>
+                    <span class="skill-tag">IoT/PLC</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Mobile & ERP</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Android Native</span>
+                    <span class="skill-tag">OpenERP/Odoo</span>
+                    <span class="skill-tag">Agile/Scrum</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>IoT Industrial Monitoring System</h3>
+                </div>
+                <div class="project-body">
+                    <div class="project-date">2024 - Present</div>
+                    <p><strong>El Sewedy Electric Sedeco</strong></p>
+                    <p><strong>Technologies:</strong> Mitsubishi PLC, NovaCon Gateway, Node-RED, MQTT, Python</p>
+                    <ul>
+                        <li>Architected real-time IoT monitoring system for 10+ industrial machines across 3 production facilities</li>
+                        <li>Integrated PLC data extraction reducing manual monitoring by 70% and improving response time</li>
+                        <li>Decreased equipment downtime by 25% through predictive maintenance alerts and automated reporting</li>
+                        <li>Implemented MQTT protocol for seamless data transmission, processing 1000+ data points per minute</li>
+                        <li>Currently finalizing system deployment with expected ROI of 40% within first year</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Enterprise Management Platform</h3>
+                </div>
+                <div class="project-body">
+                    <div class="project-date">2023 - Present</div>
+                    <p><strong>ElSewedy Electric</strong></p>
+                    <p><strong>Technologies:</strong> Oracle APEX, PL/SQL, RESTful API, Oracle Database</p>
+                    <ul>
+                        <li>Developed comprehensive system managing 200+ employee reports monthly, reducing processing time by 30%</li>
+                        <li>Built automated finance reporting module handling $2M+ in transactions with 99.9% accuracy</li>
+                        <li>Implemented production tracking dashboard monitoring 50+ products across multiple facilities</li>
+                        <li>Created self-service portal for license requests and training applications, decreasing HR workload by 45%</li>
+                        <li>Integrated role-based access control securing sensitive data for 300+ users</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Educational Platform & Content</h3>
+                </div>
+                <div class="project-body">
+                    <div class="project-date">2022 - 2023</div>
+                    <p><strong>Ace Series Academy</strong></p>
+                    <p><strong>Technologies:</strong> Python, JavaScript, Django, Custom CMS</p>
+                    <ul>
+                        <li>Designed comprehensive curriculum for Web Development, Python, and Java serving 100+ students</li>
+                        <li>Created 50+ interactive coding exercises and activities increasing student engagement by 60%</li>
+                        <li>Developed automated assessment system reducing grading time by 50% while improving feedback quality</li>
+                        <li>Produced 100+ educational videos and social media content generating 10K+ views</li>
+                        <li>Achieved 90% student satisfaction rate and 85% course completion rate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Let's collaborate on your next project or discuss opportunities in software development and education.</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <a href="mailto:zyadtry121@gmail.com" style="color: white;">zyadtry121@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>01029704749</span>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>El-Shourk City, New Cairo</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ziad Ahmed Saad. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Building the future, one line of code at a time.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuIcon.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuIcon.textContent = '☰';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navMenu.classList.remove('active');
+                menuIcon.textContent = '☰';
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.animation = 'fadeInUp 1s forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .skill-category, .project-card, .stat-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add active state to nav links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
